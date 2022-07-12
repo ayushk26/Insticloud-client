@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {createUser} from '../utils/user'
 
 const RegisterPage = () => {
 
@@ -18,9 +19,9 @@ const [username,setUsername] = useState('')
     setPassword2(event.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if(password1 === password2){
-        console.log(username,password1)
+        await createUser(username,password1)
     }
     else{
         alert("Passwords don't match!")

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {loginUser} from '../utils/user'
 
 const LoginPage = () => {
 
@@ -15,6 +16,7 @@ const LoginPage = () => {
   }
   
   const handleSubmit = () => {
+    loginUser(username,password)
     console.log(username,password)
   }
 
