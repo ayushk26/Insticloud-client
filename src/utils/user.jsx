@@ -24,4 +24,10 @@ const loginUser = (username,password) => {
     })
 }
 
+const logoutUser = () =>{
+    user.leave((ack)=> {
+        alert("User logged out")
+    })
+}
+
 export default {loginUser,createUser}
