@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {loginUser} from '../utils/user'
+import User from '../utils/user'
 
 const LoginPage = () => {
 
@@ -16,19 +16,17 @@ const LoginPage = () => {
   }
   
   const handleSubmit = () => {
-    loginUser(username,password)
-    console.log(username,password)
+    User.loginUser(username,password)
   }
 
   return (
     <>
       <h1>Login</h1>
       <div>
-        <form onSubmit={handleSubmit} >
           <input type="text" name="username" id="username" value={username} onChange={handleUsernameChange} placeholder="Username"/>
           <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} placeholder="Password"/>
-          <input type="submit" />
-        </form>
+          <input type="submit" onClick={handleSubmit}/>
+        
       </div>
     </>
   )

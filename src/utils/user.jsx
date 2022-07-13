@@ -1,26 +1,27 @@
 const GUN = require('gun')
+const SEA = require('gun/sea') // Don't remove this, it contains gun.user() func
 
 const gun = new GUN()
-var user = gun.user
+const user = gun.user()
 
-const createUser = async (username,password) => {
+const createUser = (username,password) => {
+
     user.create(username,password,(ack)=>{
         if(ack.err) alert(ack.err)
         else {
-            console.log(ack)
             alert('User Created')
         }
     })
 }
 
-const loginUser = async (username,password) => {
+const loginUser = (username,password) => {
+
     user.auth(username,password,(ack) => {
         if(ack.err) alert(ack.err)
         else {
-            console.log(ack)
             alert('User Logged in')
         }
     })
 }
 
-export default {createUser, loginUser}
+export default {loginUser,createUser}

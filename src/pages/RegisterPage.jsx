@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {createUser} from '../utils/user'
+import User from '../utils/user'
 
 const RegisterPage = () => {
 
@@ -21,7 +21,7 @@ const [username,setUsername] = useState('')
 
   const handleSubmit = async () => {
     if(password1 === password2){
-        await createUser(username,password1)
+        await User.createUser(username,password1)
     }
     else{
         alert("Passwords don't match!")
@@ -34,12 +34,10 @@ const [username,setUsername] = useState('')
     <>
     <h1>Register</h1>
     <div>
-        <form onSubmit={handleSubmit}>
           <input type="text" name="username" id="username" value={username} onChange={handleUsernameChange} placeholder="Username"/>
           <input type="password" name="password1" id="password1" value={password1} onChange={handlePassword1Change} placeholder="Password"/>
           <input type="password" name="password2" id="password2" value={password2} onChange={handlePassword2Change} placeholder="Re-enter password"/>
-          <input type="submit" />
-        </form>
+          <input type="submit" onClick={handleSubmit}/>
     </div>
     </>
   )
